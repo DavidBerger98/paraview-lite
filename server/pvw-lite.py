@@ -85,13 +85,10 @@ if '--virtual-env' in sys.argv:
 defaultProxyFile = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'proxies.json')
 
 # import paraview modules.
+from paraview import simple
 from paraview.web import pv_wslink
 from paraview.web import protocols as pv_protocols
 
-# import RPC annotation
-from wslink import register as exportRpc
-
-from paraview import simple
 from wslink import server
 
 import lite_protocols as local_protocols
@@ -201,7 +198,7 @@ class _Server(pv_wslink.PVServerProtocol):
         self.updateSecret(_Server.authKey)
 
         # tell the C++ web app to use no encoding. ParaViewWebPublishImageDelivery must be set to decode=False to match.
-        self.getApplication().SetImageEncoding(0);
+        self.getApplication().SetImageEncoding(0)
 
         # Disable interactor-based render calls
         view = simple.GetRenderView()
