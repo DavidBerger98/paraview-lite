@@ -6,7 +6,8 @@
         { "name": "Text" },
         { "name": "Wavelet" },
         { "name": "Box" },
-        { "name": "Cylinder" }
+        { "name": "Cylinder" },
+        { "name": "MeroVTKReader" }
     ],
 
     "filters": [

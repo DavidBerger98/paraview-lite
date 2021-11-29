@@ -25,6 +25,9 @@ import streamTracerModule from 'paraview-lite/src/modules/StreamTracer/module';
 import Threshold from 'paraview-lite/src/modules/Threshold';
 import thresholdModule from 'paraview-lite/src/modules/Threshold/module';
 
+import MeroVTKReader from 'paraview-lite/src/modules/MeroVTKReader';
+import meroVTKReaderModule from 'paraview-lite/src/modules/MeroVTKReader/module';
+
 import DefaultComponent from 'paraview-lite/src/modules/Default';
 import defaultModule from 'paraview-lite/src/modules/Default/module';
 
@@ -44,6 +47,10 @@ export default function registerModules(store) {
   store.commit('PVL_MODULES_ADD', {
     ...streamTracerModule,
     component: StreamTracer,
+  });
+  store.commit('PVL_MODULES_ADD', {
+    ...meroVTKReaderModule,
+    component: MeroVTKReader,
   });
 
   // --------------------------------------------------------------------------
