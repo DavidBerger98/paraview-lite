@@ -1,0 +1,45 @@
+<div :class="$style.container">
+  <v-container fluid fill-height align-center :class="$style.topBar">
+    <v-layout row justify-start align-center>
+      <v-flex xs1 justify-center>
+        <v-icon :color="color">{{ module.icon }}</v-icon>
+      </v-flex>
+      <v-flex justify-start>
+        <label :class="$style.title" :color="color">{{ module.label }}</label>
+      </v-flex>
+      <v-spacer />
+      <v-btn flat icon @click="removeActiveModule" :color="color">
+        <v-icon>{{ $vuetify.icons.pvLite.cancel }}</v-icon>
+      </v-btn>
+    </v-layout>
+  </v-container>
+
+  <v-card flat :class="$style.block">
+    <v-card-text :class="$style.blockContent">
+      <v-container fluid grid-list-md :class="$style.noPaddingMargin">
+        <v-layout row wrap align-center>
+
+          <v-flex xs3>
+            <label :class="$style.smallLabel">ObjectURI</label>
+          </v-flex>
+          <v-flex xs9>
+            <v-text-field :class="$style.noTopPadding" hide-details v-model="objectURI" type="String" />
+          </v-flex>
+
+          <v-flex xs3>
+            <label :class="$style.smallLabel">ObjectSize</label>
+          </v-flex>
+          <v-flex xs9>
+            <v-text-field :class="$style.noTopPadding" hide-details v-model="objectSize" :max="10000" :min="0" step="1"
+              type="Number" />
+          </v-flex>
+
+        </v-layout>
+      </v-container>
+    </v-card-text>
+  </v-card>
+
+  <v-card flat :class="$style.block">
+    <v-btn block outline color="indigo"  @click="open">Create</v-btn>
+  </v-card>
+</div>
