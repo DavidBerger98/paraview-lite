@@ -12,12 +12,12 @@ export default {
     sources: {
       type: Array,
       default: () => [
-        // 'Box',
+        'Box',
         'Cone',
-        // 'Cylinder',
+        'Cylinder',
         'Sphere',
-        // 'Text',
-        'Wavelet',
+        'Text',
+        'Wavelet'
       ],
     },
   },
