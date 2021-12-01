@@ -1,0 +1,93 @@
+<div :class="$style.container">
+  <v-container fluid fill-height align-center :class="$style.topBar">
+    <v-layout row justify-start align-center>
+      <v-flex xs1 justify-center>
+        <v-icon :color="color">{{ module.icon }}</v-icon>
+      </v-flex>
+      <v-flex justify-start>
+        <label :class="$style.title" :color="color">{{ module.label }}</label>
+      </v-flex>
+      <v-spacer />
+      <v-btn
+        flat
+        icon
+        @click="deleteProxy"
+        :color="color"
+      >
+        <v-icon>{{ $vuetify.icons.pvLite.delete }}</v-icon>
+      </v-btn>
+    </v-layout>
+  </v-container>
+
+  <v-container fluid grid-list-md>
+    <v-layout row wrap align-center >
+      <v-flex xs4>
+        <label :class="$style.smallLabel">Glyph Type</label>
+      </v-flex>
+      <v-flex xs8>
+        <v-text-field
+          :class="$style.noTopPadding"
+          hide-details
+          v-model="glyphType"
+          type="String"
+        />
+      </v-flex>
+
+      <v-flex xs4>
+        <label :class="$style.smallLabel">Scale Array</label>
+      </v-flex>
+      <v-flex xs8>
+        <v-text-field
+          :class="$style.noTopPadding"
+          hide-details
+          v-model="scaleArray"
+          type="String"
+        />
+      </v-flex>
+
+      <v-flex xs4>
+        <label :class="$style.smallLabel">Scale Factor</label>
+      </v-flex>
+      <v-flex xs8>
+        <v-text-field
+          :class="$style.noTopPadding"
+          hide-details
+          v-model="scaleFactor"
+          :max="10"
+          :min="0.1"
+          step="0.1"
+          type="Number"
+        />
+      </v-flex>
+
+
+    </v-layout>
+  </v-container>
+
+  <v-container
+    fluid
+    grid-list-md
+    v-if="hasChange() && !autoApply && !create"
+    :class="$style.buttonBar"
+  >
+    <v-layout row wrap align-center >
+      <v-flex xs3>
+        <v-btn
+          block
+          outline
+          color="red darken-1"
+          @click="reset"
+        >Reset</v-btn>
+      </v-flex>
+      <v-spacer />
+      <v-flex xs7>
+        <v-btn
+          block
+          outline
+          color="teal accent-4"
+          @click="apply"
+        >Apply ({{ hasChange() }})</v-btn>
+      </v-flex>
+    </v-layout>
+  </v-container>
+</div>

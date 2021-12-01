@@ -1,0 +1,91 @@
+<div :class="$style.container">
+  <v-container fluid fill-height align-center :class="$style.topBar">
+    <v-layout row justify-start align-center>
+      <v-flex xs1 justify-center>
+        <v-icon :color="color">{{ module.icon }}</v-icon>
+      </v-flex>
+      <v-flex justify-start>
+        <label :class="$style.title" :color="color">{{ module.label }}</label>
+      </v-flex>
+      <v-spacer />
+      <v-btn
+        flat
+        icon
+        @click="deleteProxy"
+        :color="color"
+      >
+        <v-icon>{{ $vuetify.icons.pvLite.delete }}</v-icon>
+      </v-btn>
+    </v-layout>
+  </v-container>
+
+  <v-container fluid grid-list-md>
+    <v-layout row wrap align-center >
+      <v-flex xs6>
+        <label :class="$style.smallLabel">Number of Sides</label>
+      </v-flex>
+      <v-flex xs6>
+        <v-text-field
+          :class="$style.noTopPadding"
+          hide-details
+          v-model="numberOfSides"
+          :max="50"
+          :min="1"
+          step="1"
+          type="Number"
+        />
+      </v-flex>
+
+      <v-flex xs6>
+        <label :class="$style.smallLabel">Vary Radius</label>
+      </v-flex>
+      <v-flex xs6>
+        {{this.varyRadius}}
+      </v-flex>
+
+      <v-flex xs6>
+        <label :class="$style.smallLabel">Radius Factor</label>
+      </v-flex>
+      <v-flex xs6>
+        <v-text-field
+          :class="$style.noTopPadding"
+          hide-details
+          v-model="radiusFactor"
+          :max="50"
+          :min="0.001"
+          step="any"
+          type="Number"
+        />
+      </v-flex>
+
+
+    </v-layout>
+  </v-container>
+
+  <v-container
+    fluid
+    grid-list-md
+    v-if="hasChange() && !autoApply && !create"
+    :class="$style.buttonBar"
+  >
+    <v-layout row wrap align-center >
+      <v-flex xs3>
+        <v-btn
+          block
+          outline
+          color="red darken-1"
+          @click="reset"
+        >Reset</v-btn>
+      </v-flex>
+      <v-spacer />
+      <v-flex xs7>
+        <v-btn
+          block
+          outline
+          color="teal accent-4"
+          @click="apply"
+        >Apply ({{ hasChange() }})</v-btn>
+      </v-flex>
+    </v-layout>
+  </v-container>
+</div>
