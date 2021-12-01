@@ -23,6 +23,7 @@
         { "name": "Threshold" },
         { "name": "Transform" },
         { "name": "Tube" },
+        { "name": "Glyph" },
         { "name": "Ribbon" },
         { "name": "WarpByScalar", "label": "Warp By Scalar" },
         { "name": "WarpByVector", "label": "Warp By Vector" },

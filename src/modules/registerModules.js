@@ -41,6 +41,12 @@ import streamTracerModule from 'paraview-lite/src/modules/StreamTracer/module';
 import Threshold from 'paraview-lite/src/modules/Threshold';
 import thresholdModule from 'paraview-lite/src/modules/Threshold/module';
 
+import Glyph from 'paraview-lite/src/modules/Glyph';
+import GlyphModule from 'paraview-lite/src/modules/Glyph/module';
+
+import Tube from 'paraview-lite/src/modules/Tube';
+import TubeModule from 'paraview-lite/src/modules/Tube/module';
+
 import DefaultComponent from 'paraview-lite/src/modules/Default';
 import defaultModule from 'paraview-lite/src/modules/Default/module';
 
@@ -67,6 +73,8 @@ export default function registerModules(store) {
     ...streamTracerModule,
     component: StreamTracer,
   });
+  store.commit('PVL_MODULES_ADD', { ...GlyphModule, component: Glyph });
+  store.commit('PVL_MODULES_ADD', { ...TubeModule, component: Tube });
 
   // --------------------------------------------------------------------------
   // Proxy to UI mapping
@@ -127,6 +135,16 @@ export default function registerModules(store) {
   store.commit('PVL_PROXY_MODULE_BIND', {
     name: 'StreamTracer',
     module: 'StreamTracer',
+  });
+
+  store.commit('PVL_PROXY_MODULE_BIND', {
+    name: 'TubeFilter',
+    module: 'Tube',
+  });
+
+  store.commit('PVL_PROXY_MODULE_BIND', {
+    name: 'Glyph',
+    module: 'GlyphModule', // Glyph is a reserved name in Vue.js
   });
 
   // --------------------------------------------------------------------------
