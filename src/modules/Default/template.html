@@ -18,8 +18,10 @@
       </v-btn>
     </v-layout>
   </v-container>
-  <v-list>
-    <v-divider />
-    Nothing to put here...
-  </v-list>
+  
+  <v-card flat :class="$style.block">
+    <v-card-text :class="$style.blockContent">
+      Nothing to put here...
+    </v-card-text>
+  </v-card>
 </div>
